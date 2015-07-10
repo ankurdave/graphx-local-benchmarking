@@ -48,8 +48,10 @@ int main(int argc, char* argv[]) {
 
   clock_t start_time = clock();
 
-  for (int i = 0; i < num_edges; i++) {
-    vertex_preagg[dstIds[i]] += vertex_attrs[srcIds[i]] * attrs[i];;
+  for (size_t k = 0; k < 10; ++k) {
+    for (int i = 0; i < num_edges; i++) {
+      vertex_preagg[dstIds[i]] += vertex_attrs[srcIds[i]] * attrs[i];;
+    }
   }
 
   clock_t end_time = clock();
