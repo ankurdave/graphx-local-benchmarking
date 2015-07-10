@@ -7,6 +7,7 @@ object LocalTest {
 
   def main(args: Array[String]) {
     val file = args(0)
+    val iters = args(1).toInt
 
     println("Loading...")
 
@@ -25,7 +26,6 @@ object LocalTest {
     println("Scanning...")
 
     var sum = 0.0
-    val iters = 10
     val start_time = System.nanoTime
 
     for (i <- 1 to iters) {
