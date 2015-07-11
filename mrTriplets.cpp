@@ -48,15 +48,19 @@ int main(int argc, char* argv[]) {
 
   clock_t start_time = clock();
 
-  for (size_t k = 0; k < 10; ++k) {
+
+  int num_iters = 10;
+  for (int iter = 0; iter < num_iters; iter++) {
     for (int i = 0; i < num_edges; i++) {
       vertex_preagg[dstIds[i]] += vertex_attrs[srcIds[i]] * attrs[i];;
     }
   }
 
   clock_t end_time = clock();
+  double dur = (end_time - start_time) / static_cast<double>(CLOCKS_PER_SEC);
   printf("Scanned %d edges in %f seconds\n",
-         num_edges, (end_time - start_time) / static_cast<double>(CLOCKS_PER_SEC));
+         num_edges * num_iters, dur);
+  printf("%f edges/s\n", num_edges * num_iters / dur);
 
   double sum = 0.0;
   for (int i = 0; i < voffset; i++) {
